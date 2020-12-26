@@ -163,5 +163,28 @@ $(function () {
 });
 
 // Manipulating Attributes & Content //
+$(function () {
+    // attr(), prop(), val()
+    //var specialLink = $("#special-link");
+    //console.log(specialLink.attr("href")); // returns the url attribute
+    //specialLink.attr("href", "http://yahoo.com"); // changes value of attribute
+
+    //var checkbox = $("input:checkbox");
+    //console.log(checkbox.prop("checked")); // returns true since checkbox is checked
+    //console.log(checkbox.attr("checked"));
+
+    //var textInput = $("input:text"); // returns Peter which is the value of the element
+    //textInput.val("Jason Duff"); // updates the value
+    //console.log(textInput.val());
+
+    //var rangeInput = $("input[type='range']"); // returns 7
+    //console.log(rangeInput.val());
+});
+
+
+
+
+
+
 
 
