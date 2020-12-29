@@ -127,6 +127,26 @@ $(function () {
 // MANIPULATING THE DOM WITH JQUERY //
 //*****************************************************************************************************************************************************************************//
 
+// SlideShow //
+$(function () {
+    var galleryImage = $(".gallery").find("img").first();
+    var images = [
+        "images/laptop-mobile_small.jpg",
+        "images/laptop-on-table_small.jpg",
+        "images/people-office-group-team_small.jpg"
+    ];
+    // function to switch image every 2 seconds //
+    var i = 0;
+    setInterval(function () {
+        i = (i + 1) % images.length; // 0, 1, 2, 0, 1, 2, 0, 1, ....
+        galleryImage.fadeOut(function () { // function is executed as soon as animation is finished
+            $(this).attr("src", images[i]); // this refers to galleryImage
+            $(this).fadeIn();
+        })
+        //console.log(galleryImage.attr("src"));
+    }, 2000);
+});
+
 $(function () {
     // Adding To Elements //
     //$("ul ul:first").append("<li>I'm going to be the last sub item</li>"); // use append to add to selected element, makes it last child
@@ -181,10 +201,185 @@ $(function () {
     //console.log(rangeInput.val());
 });
 
+//*****************************************************************************************************************************************************************************//
+// MANIPULATING THE DOM WITH JQUERY II //
+//*****************************************************************************************************************************************************************************//
 
+$(function () {
+    //var redBox = $(".red-box");
+    //console.log(redBox.css("width")); // return width of red-box
 
+    // redBox.css("background-color", "orange");
+    // $("p").css("font-size", "18px");
+    // redBox.css("width","+=20px"); // increase current width by 20px
+    //
+    // var properties = $("p").css(["font-size", "line-height", "color"]); // creates a JS object
+    // console.log(properties);
+    // console.log(properties["font-size"]); // access one key of the object in properties
+    //
+    // redBox.css("user-select", "none");
+});
 
+// Adding or Removing CSS Classes
+$(function () {
+    // $("a").addClass("fancy-link"); // class="...."
+    // $("p:first").addClass("large emphasize");
+    //
+    // $("li li").addClass(function (index) {
+    //     $(this).addClass("item-" + index); // add a class to each index of the items
+    // });
+    //
+    // $("div").addClass(function (index, currentClass) { // add redbox to dummy text
+    //     if (currentClass === "dummy") {
+    //         return "red-box";
+    //     }
+    // });
+    //
+    // $(".red-box").removeClass("red-box").addClass("blue-box"); // remove redboxes and replace with blueboxes
+    //$(".dummy").removeClass("dummy").addClass("green-box"); // remove dummy class and replace with green-box class
+});
 
+// Changing the Data of an Element // (gallery)
+$(function () {
+//
+//     // jQuery allows you to attach arbitrary data to any element, represented as
+//     // HTML attributes prefixed with "data-", e.g. "data-images".
+//     // Here, we'll attach data about all available images to the gallery itself.
+//
+//     // Select the <img> inside the gallery to manipulate it later
+//     var gallery = $(".gallery");
+//
+//     // Initialize an array of all images for the gallery
+//     var images = [
+//         "images/laptop-mobile_small.jpg",
+//         "images/laptop-on-table_small.jpg",
+//         "images/people-office-group-team_small.jpg"
+//     ];
+//
+//     // To attach data, use the data() function and pass in two arguments: first,
+//     // the key for the data, and second the actual data/value.
+//     gallery.data("availableImages", images);
+//     // To retrieve the data, again use just one argument: the key.
+//     console.log(gallery.data("availableImages"));  // Array[...]
+//
+//     gallery.data("name", "The Amazing Gallery");
+//     console.log(gallery.data("name"));  // The Amazing Gallery
+//
+//     // Remove data just as easily using removeData().
+//     gallery.removeData("name");
+//     console.log(gallery.data("name"));  // undefined
+//
+//     // If you attach data directly in HTML via an attribute prefixed with "data-",
+//     // you can read that automatically from jQuery.
+//     var data = $("p:first").data("mydata");
+//     console.log(data);  // Data coming from HTML attribute
+//
+});
+
+// Retrieving & Changing The Content of an Element //
+$(function () {
+    // text(), html()
+    //var firstPar = $("p:first");
+    // console.log(firstPar.text());
+    // console.log(firstPar.html());
+
+    //firstPar.text("<strong>Hello</strong> World!"); // will show code on webpage
+    //firstPar.html("<strong>Hello</strong> World!");
+
+    //firstPar.html(firstPar.html() + " This was just appended");
+});
+
+//*****************************************************************************************************************************************************************************//
+// MOUSE EVENTS & KEYBOARD EVENTS //
+//*****************************************************************************************************************************************************************************//
+
+// Adding Click Handlers //
+$(function () {
+    // $("#btn-click").click(function (event) {
+    //     console.log(event);
+    //     alert("Button was clicked");
+    // });
+
+    // $(".red-box").click(function () { // fade red-box to 50% opacity
+    //     $(this).fadeTo(500, 0.5);
+    // });
+    //$(".red-box").click(); // when page is refreshed box goes to 50% opacity automatically
+});
+
+// Adding Hover Handlers //
+$(function () {
+    // :hover
+    // $("#btn-hover").hover(function (event) {
+    //     alert("Button was hovered");
+    // });
+    //
+    // $(".green-box").hover(function () {
+    //     $(this).text("I was hovered");
+    // });
+});
+
+// Adding MouseEnter & MouseLeave Handlers //
+$(function () {
+    // // fades blue-box when mouse enters and then goes back to blue when mouse leaves //
+    // var blueBox = $(".blue-box");
+    // blueBox.mouseenter(function () {
+    //     $(this).stop().fadeTo(500, 0.7);
+    // });
+    // blueBox.mouseleave(function () {
+    //     $(this).stop().fadeTo(500, 1);
+    // })
+    //
+    // // hover(handlerIn, handlerOut) alternative way to above
+    // blueBox.hover(function () {
+    //     $(this).stop().fadeTo(500, 0.7);
+    // }, function(){
+    //     $(this).stop().fadeTo(500, 1);
+    // });
+});
+
+// Adding Same Handler for Multiple Events //
+$(function () {
+    // //.on("click", function() {...})
+    // $("html").on("click keydown hover", function() {
+    //     console.log("Mouse was clicked or key was pressed");
+    // });
+});
+
+// Delegated Events //
+$(function () {
+    // Delegated Events // When p tag is clicked it slides up //
+    $("#content").on("click", "p", function () {
+        $(this).slideUp();
+    });
+
+    // grey out list items when hovered
+    $("content").append("<p>This is a dynamically added paragraph.</p>");
+
+    $("body").on("mouseenter", "li", function () {
+        $(this).css("color", "#666");
+    });
+});
+
+// Passing Additional Data To Events //
+$(function () {
+    $("#btn-click").click({
+        user: "Jim",
+        domain: "yahoo.com"
+    }, function (event) {
+        greetUser(event.data);
+    });
+
+    function greetUser(userdata) {
+        username = userdata.user || "Anonymous"
+        domain = userdata.domain || "example.com"
+        alert("Welcome Back " + username + " from " + domain + "!");
+    }
+});
+
+// Passing Additional Data To Events //
+$(function () {
+
+});
 
 
 
