@@ -128,24 +128,24 @@ $(function () {
 //*****************************************************************************************************************************************************************************//
 
 // SlideShow //
-$(function () {
-    var galleryImage = $(".gallery").find("img").first();
-    var images = [
-        "images/laptop-mobile_small.jpg",
-        "images/laptop-on-table_small.jpg",
-        "images/people-office-group-team_small.jpg"
-    ];
-    // function to switch image every 2 seconds //
-    var i = 0;
-    setInterval(function () {
-        i = (i + 1) % images.length; // 0, 1, 2, 0, 1, 2, 0, 1, ....
-        galleryImage.fadeOut(function () { // function is executed as soon as animation is finished
-            $(this).attr("src", images[i]); // this refers to galleryImage
-            $(this).fadeIn();
-        })
-        //console.log(galleryImage.attr("src"));
-    }, 2000);
-});
+// $(function () {
+//     var galleryImage = $(".gallery").find("img").first();
+//     var images = [
+//         "images/laptop-mobile_small.jpg",
+//         "images/laptop-on-table_small.jpg",
+//         "images/people-office-group-team_small.jpg"
+//     ];
+//     // function to switch image every 2 seconds //
+//     var i = 0;
+//     setInterval(function () {
+//         i = (i + 1) % images.length; // 0, 1, 2, 0, 1, 2, 0, 1, ....
+//         galleryImage.fadeOut(function () { // function is executed as soon as animation is finished
+//             $(this).attr("src", images[i]); // this refers to galleryImage
+//             $(this).fadeIn();
+//         })
+//         //console.log(galleryImage.attr("src"));
+//     }, 2000);
+// });
 
 $(function () {
     // Adding To Elements //
@@ -348,38 +348,156 @@ $(function () {
 // Delegated Events //
 $(function () {
     // Delegated Events // When p tag is clicked it slides up //
-    $("#content").on("click", "p", function () {
-        $(this).slideUp();
-    });
-
-    // grey out list items when hovered
-    $("content").append("<p>This is a dynamically added paragraph.</p>");
-
-    $("body").on("mouseenter", "li", function () {
-        $(this).css("color", "#666");
-    });
+    // $("#content").on("click", "p", function () {
+    //     $(this).slideUp();
+    // });
+    //
+    // // grey out list items when hovered
+    // $("content").append("<p>This is a dynamically added paragraph.</p>");
+    //
+    // $("body").on("mouseenter", "li", function () {
+    //     $(this).css("color", "#666");
+    // });
 });
 
 // Passing Additional Data To Events //
 $(function () {
-    $("#btn-click").click({
-        user: "Jim",
-        domain: "yahoo.com"
-    }, function (event) {
-        greetUser(event.data);
-    });
-
-    function greetUser(userdata) {
-        username = userdata.user || "Anonymous"
-        domain = userdata.domain || "example.com"
-        alert("Welcome Back " + username + " from " + domain + "!");
-    }
+    // $("#btn-click").click({
+    //     user: "Jim",
+    //     domain: "yahoo.com"
+    // }, function (event) {
+    //     greetUser(event.data);
+    // });
+    //
+    // function greetUser(userdata) {
+    //     username = userdata.user || "Anonymous"
+    //     domain = userdata.domain || "example.com"
+    //     alert("Welcome Back " + username + " from " + domain + "!");
+    // }
 });
 
-// Passing Additional Data To Events //
+// Creating an Image Gallery with Lightbox Preview //
+$(function () {
+    // var galleryItems = $(".gallery").find("img");
+    // galleryItems.css("width", "33%").css("opacity", "0.7");
+    //
+    // galleryItems.mouseenter(function() {
+    //     $(this).stop().fadeTo(500, 1);
+    // });
+    // galleryItems.mouseleave(function() {
+    //     $(this).stop().fadeTo(500, 0.7);
+    // });
+    //
+    // galleryItems.click(function() {
+    //     var source = $(this).attr("src");
+    //     var image = $("<img>").attr("src", source).css("width", "100%");
+    //     $(".lightbox").empty().append(image).fadeIn(2000);
+    // });
+    //
+    // // make lightbox fade out //
+    // $(".lightbox").click(function() {
+    //     $(this).stop().fadeOut();
+    // });
+});
+
+// KeyDown & KeyUp Events //
+$(function () {
+    // $("html").keydown(function(event) {
+    //     console.log(event.which) // tell you what key was pressed
+    // });
+    //
+    // // Make blue box move to the right with arrow key
+    // var ARROW_RIGHT = 39;
+    // $("html").keydown(function(event) {
+    //     if (event.which === ARROW_RIGHT) {
+    //         $(".blue-box").stop().animate({
+    //             marginLeft: "+=10px"
+    //         }, 50);
+    //     }
+    // });
+});
+
+//*****************************************************************************************************************************************************************************//
+// FORMS & EVENTS //
+//*****************************************************************************************************************************************************************************//
+
+// Focus & Blur Events //
+
+// add box shadow when click on submit box
+$(function () {
+    // var inputFields = $("input:text, input:password, textarea");
+    // inputFields.focus(function () {
+    //     $(this).css("box-shadow", "0 0 4px #666");
+    // });
+    // // add blur event
+    // inputFields.blur(function(){
+    //     $(this).css("box-shadow", "none");
+    // });
+    //
+    // $("#name").blur(function(){
+    //     var text = $(this).val();
+    //     if(text.length < 3) {
+    //         $(this).css("box-shadow", "0 0 4px #811");
+    //     } else {
+    //         $(this).css("box-shadow", "0 0 4px #181");
+    //     }
+    // });
+});
+
+// Change Event //
 $(function () {
 
+    // The change event is used for input elements such as checkboxes, radio
+    // button and select tags. They fire whenever the selection changes.
+
+    // Add green indicator when checkbox is checked and red one otherwise.
+    // $("#checkbox").change(function() {
+    //     var isChecked = $(this).is(":checked");  // or .prop("checked")
+    //
+    //     if (isChecked) {
+    //         // Add the checkbox' label to the selection and highlight both in green.
+    //         $(this).add("label[for='checkbox']").css("box-shadow", "0 0 4px #181");
+    //     } else {
+    //         $(this).add("label[for='checkbox']").css("box-shadow", "0 0 4px #811");
+    //     }
+    // });
+
+    // Another common use case is to read the selected option from a <select>
+    // element when a new option is selected.
+//     $("#selection").change(function() {
+//         var chosen = $(this).find(":selected").text();
+//         alert(chosen);
+//     });
+//
 });
 
+// Submit Event //
+// $(function () {
+//
+//     // You can intercept form submission via the submit event.
+//     // jQuery provides the submit() for this. A common use case is to perform
+//     // client-side form validation to avoid submitting a form with invalid data.
+//
+//     // For instance, let's check if the user wrote a message in the textarea.
+//     $("#form").submit(function(event) {
+//         var textarea = $("#message");
+//         if (textarea.val().trim() === "") {
+//             // No message, add red highlighting to indicate error
+//             textarea.css("box-shadow", "0 0 4px #811");
+//
+//             // The default event now would be to submit the form. The browser will do
+//             // this automatically when clicking a submit button. We prevent this using
+//             // preventDefault(). This way, the form will not be submitted.
+//             event.preventDefault();
+//         } else {
+//             // Nothing to do, let the form be submitted.
+//         }
+//     });
+//
+// });
+
+//*****************************************************************************************************************************************************************************//
+// AJAX //
+//*****************************************************************************************************************************************************************************//
 
 
