@@ -213,6 +213,7 @@ $(function () {
 //     element.css("background-color", "rgba(180, 180, 30, 0.8)");
 //}
 
+// selectors
 $(function () {
 
     // // NOTE: Some of the selectors below overlap. To see the exact effect of one
@@ -256,6 +257,7 @@ $(function () {
 //     element.css("background-color", "rgba(180, 180, 30, 0.8)");
 //}
 
+// filter elements
 $(function () {
 
     // // NOTE: Some of the selectors below overlap. To see the exact effect of one
@@ -298,11 +300,438 @@ $(function () {
 //     element.css("background-color", "rgba(180, 180, 30, 0.8)");
 //}
 
+// appending elements
+$(function () {
+
+    // // 1) Appending elements to existing elements.
+    // // -> This adds elements as the last children of a given element
+    //
+    // // Append a new list item to the end of the first sub list
+    // $("ul ul:first").append("<li>New sub item</li>");
+    //
+    // // Other way to achieve the same effect
+    // $("<li>Another new sub item</li>").appendTo("ul ul:first");
+    //
+    // // 2) Prepending elements to existing elements.
+    // // -> This adds elements as the first children of a given element
+    //
+    // // Prepend a new list item to the start of the first sub list
+    // $("ul ul:first").prepend("<li>First sub item</li>");
+    //
+    // // Other way to achieve the same effect
+    // $("<li>Very first sub item</li>").prependTo("ul ul:first");
+    //
+    // // 3) Adding elements as siblings of existing elements
+    //
+    // // Add a new elements after an existing one (as next sibling)
+    // $(".red-box").after("<div class='red-box'>New Red</div>");
+    //
+    // // Add a new elements before an existing one (as previous sibling)
+    // $(".blue-box").before("<div class='blue-box'>New Blue</div>");
+    //
+    // // You can also use a callback function to construct more complex
+    // // elements to add to the DOM
+    // $(".green-box").after(function() {
+    //     // Maybe more complex string of new element(s)
+    //     return "<div class='green-box'>New Green</div>";
+    // });
+    //
+    // // 4) Add existing elements to other existing elements
+    // // -> This will move the added element, so the original vanishes
+    //
+    // // For instance, add the #list after the first paragraph (removes it from its
+    // // original position).
+    // // In case it's added to multiple elements, jQuery must clone the added element.
+    // $("p:first").after($("#list"));
+
+});
+
+// replacing elements
+$(function () {
+
+    // // replace all red boxes and blue boxes with a green box
+    // $(".red-box, .blue-box").replaceWith("<div class='green-box'>More Green</div>");
+    //
+    //
+    // // Replace each selected item with another one.
+    // // For instance, replace all <p> tags with another one.
+    // $("p:first").replaceWith("<p>I've been replaced.</p>")
+    //
+    // // Again, to construct more complex elements, you may want
+    // // to do that in a callback function:
+    // $("p:last").replaceWith(function() {
+    //     return "<p>Complex new paragraph...</p>";
+    // });
+    //
+    // // Also, you can again replace an element with another existing
+    // // element which will remove it from its original position.
+    // $(".red-box").replaceWith($(".blue-box"));
+    //
+    // // You can also replace multiple items at the same time.
+    // $("li:first, li:last").replaceWith("<li>First or last list item</li>");
+
+});
+
+// removing elements
+$(function () {
+
+    //  // You can remove an existing element simply with remove().
+    //  // For instance, the first main item:
+    //  $("li:first").remove();
+    //
+    //  // exercise //
+    // //$("form").children().not("input:text, textarea, br").remove();
+    //
+    //  // If you want to reuse/re-display the element later, you should
+    //  // use detach(). This also keeps all attached event handlers alive.
+    //  // First, this removes the element from the DOM:
+    //  var detached = $("p:first").detach();
+    //  // Next, this will re-attach the element to the DOM (at another position):
+    //  $("#list").after(detached);
+    //
+    //  // To remove all elements *inside* a given elements, you can use empty().
+    //  // The element itself remains in the DOM, so in this case the <form>.
+    //  $("form").empty();
+
+});
+
+// changing attributes &  properties
+$(function () {
+
+    // // 1) Attributes with attr()
+    //
+    // // To read the current value of an attribute, use attr() with only
+    // // one argument: the name of the attribute you want to read.
+    // var link = $("#link");
+    // // Retrieve the value of the href attribute of the <a> tag
+    // // This is logged into the console. To see it, press F12 in Firefox/Chrome
+    // // to open the Developer Tools and click on the Console tab.
+    // console.log(link.attr("href"));
+    // // Log the value of the title attribute
+    // console.log(link.attr("title"));
+    //
+    // // To set the value of an attribute, you call the attr() function with two
+    // // arguments: first, the name of the attribute you want to change, and second
+    // // the new value:
+    // link.attr("href", "http://petersommerhoff.com");
+    //
+    // // 2) Properties with prop()
+    //
+    // // To read the *current* value of a checkbox for instance, you must use the
+    // // prop() function:
+    // var radioButton = $("input[type=radio]:first");
+    // console.log(radioButton.prop("checked"));  // false
+    // console.log(radioButton.attr("checked"));  // undefined
+    //
+    // // 3) Values with val()
+    // // -> Read or set the value attribute of input elements
+    //
+    // // To retrieve the value of an input element, simply call val()
+    // var email = $("input[type=email]").val();
+    // console.log(email);  // i@mine.me
+    // var number = $("input[type=range]").val();
+    // console.log(number);  // 3
+    //
+    // // To set a new value, pass the new value as an argument to val():
+    // $("input[type=text]").val("Peter Sommerhoff");
+    // $("input[type=range]").val(9);
+    //
+    // // If you have multiple elements selected, using val() will implicitly
+    // // always call first() beforehand, so only change the first input element:
+    // var value = $("input").val();
+    // console.log(value);  // Peter Sommerhoff
+
+});
+
+// make a slideshow
+$(function () {
+
+    // // Select the <img> inside the gallery to manipulate it later
+    // var galleryImage = $(".gallery").find("img").first();
+    //
+    // // Initialize an array of all images for the gallery
+    // var images = [
+    //     "images/laptop-mobile_small.jpg",
+    //     "images/laptop-on-table_small.jpg",
+    //     "images/people-office-group-team_small.jpg"
+    // ];
+    //
+    // // Now, we want to cycle through all images we have and show one after the
+    // // other in our gallery. For this, we create a variable i: the index of the
+    // // image we want to currently show.
+    // var i = 0;
+    //
+    // // setInterval will call whatever code is inside the callback function every
+    // // 2 seconds. This way, we can change the shown image every 2 seconds.
+    // setInterval(function() {
+    //     // First, we update the index i to the next image.
+    //     // However, we cannot simply do i = i+1 because that would quickly result in
+    //     // indexes i = 3, 4, 5 etc which are invalid for our array.
+    //     // So we constrain the sequence to the range 0..2 by using modulo 3 (i % 3).
+    //     i = (i + 1) % images.length;  // i = 1, 2, 0, 1, 2, 0, ...
+    //
+    //     // Now, we just have to change the src attribute of the <img> to the next
+    //     // image we want to show.
+    //     // To achieve a smooth transition, we'll actually first fadeOut the old,
+    //     // then update the src attribute behind the scenes, and then fade it back in.
+    //     galleryImage.fadeOut(function() {
+    //         // Inside the callback, "this" refers to the galleryImage
+    //         $(this).attr("src", images[i]);
+    //         $(this).fadeIn();
+    //     });
+    //
+    //     // Log current image path for debugging
+    //     console.log(galleryImage.attr("src"));
+    //
+    // }, 2000);
+
+});
+
+// Changing CSS properties of elements
+$(function () {
+
+    // hide red-box
+    //$(".red-box").css("display", "none"); // .hide()
+
+    // see a css property of red-box
+    //var redBox = $(".red-box");
+    // console.log(redBox.css("width"));
+    //redBox.css("background-color", "cyan");
 
 
+    // // To retrieve or set the value of a CSS property, you can use css().
+    // // This works similar to attr() and prop(): pass one argument to read
+    // // or two arguments to set a new value.
+    //
+    // // For instance, you can achieve the same as with hide() like this:
+    // $("p:first").css("display", "none");
+    //
+    // // Let's read the width property of .red-box:
+    // var redBox = $(".red-box");
+    // console.log(redBox.css("width"));  // 80px
+    // // To get the width or height without unit, you can use width() and height():
+    // console.log(redBox.width());  // 80
+    //
+    // // You can change any CSS property in this simple way.
+    // redBox.css("background-color", "#AA5500");
+    // $("p").css("font-size", "20px");
+    //
+    // // You can even change the value of a property relative to its previous value
+    // redBox.css("width", "+=20px");
+    // redBox.css("height", "-=20px");
+    //
+    // // Also, you can retrieve multiple values by passing an array as the argument
+    // var properties = $("p").css(["font-size", "line-height", "color"]);
+    // // The result is an object containing all values
+    // console.log(properties);
+    // console.log(properties["font-size"]);  // 20px
+    //
+    // // In line with jQuery's other function, you can also use a callback function
+    // // instead of passing in a new value directly.
+    // // This example also demonstrates that jQuery automatically uses the correct
+    // // vendor prefix for the CSS property depending on the browser, which is
+    // // -moz-user-select in this case.
+    // // You can see that in the Developer Tools (F12 in browser) in the Inspector tab.
+    // redBox.css("user-select", function() {
+    //     // [some logic here...]
+    //     return "none";
+    // });
 
+});
 
+// Adding & Removing CSS properties
+$(function () {
 
+    // // Additional CSS classes can be added to an element via addClass()
+    //
+    // // For instance, add the class .fancy-link to all anchor tags.
+    // // Note that you *do not* add a dot in front of the class name here.
+    // $("a").addClass("fancy-link");
+    //
+    // // You can also add multiple classes at once.
+    // $("p:first").addClass("large emphasize");
+    //
+    // // To attach a class based on the index of the element in your selected
+    // // set of elements, you can use a callback function.
+    // $("li li").addClass(function(index) {
+    //     // This adds classes .item-0, .item-1, ... to the list's sub-items.
+    //     $(this).addClass("item-" + index);
+    // });
+    //
+    // // You can even use two parameters for the callback function, the index
+    // // and the current class of the element.
+    // $("div").addClass(function(index, currentClasses) {
+    //     console.log(currentClasses);  // String containing all classes
+    //
+    //     // Add .red-box if the current classes contain "dummy"
+    //     if (currentClasses.indexOf("dummy") !== -1) {
+    //         return "red-box";
+    //     }
+    // });
+    //
+    // // You can again chain these calls to switch one class for another.
+    // $(".green-box").removeClass("green-box").addClass("blue-box");
+    //
+    // // To quickly toggle one particular CSS class, use toggleClass().
+    // $("li li:first").toggleClass("emphasize");
+
+});
+
+// Changing the data of an element
+$(function () {
+
+    // // jQuery allows you to attach arbitrary data to any element, represented as
+    // // HTML attributes prefixed with "data-", e.g. "data-images".
+    // // Here, we'll attach data about all available images to the gallery itself.
+    //
+    // // Select the <img> inside the gallery to manipulate it later
+    // var gallery = $(".gallery");
+    //
+    // // Initialize an array of all images for the gallery
+    // var images = [
+    //     "images/laptop-mobile_small.jpg",
+    //     "images/laptop-on-table_small.jpg",
+    //     "images/people-office-group-team_small.jpg"
+    // ];
+    //
+    // // To attach data, use the data() function and pass in two arguments: first,
+    // // the key for the data, and second the actual data/value.
+    // gallery.data("availableImages", images);
+    // // To retrieve the data, again use just one argument: the key.
+    // console.log(gallery.data("availableImages"));  // Array[...]
+    //
+    // gallery.data("name", "The Amazing Gallery");
+    // console.log(gallery.data("name"));  // The Amazing Gallery
+    //
+    // // Remove data just as easily using removeData().
+    // gallery.removeData("name");
+    // console.log(gallery.data("name"));  // undefined
+    //
+    // // If you attach data directly in HTML via an attribute prefixed with "data-",
+    // // you can read that automatically from jQuery.
+    // var data = $("p:first").data("mydata");
+    // console.log(data);  // Data coming from HTML attribute
+
+});
+
+// Retrieving & Changing the Content of an Element
+$(function () {
+
+    // append some text to first paragraph
+    // var firstPar = $("p:first");
+    // firstPar.html(firstPar.html() + " This was just appended.");
+
+    // 1) Pure text content: text()
+
+    // To read or change the textual content of an element, you use text().
+    // var p = $("p:first");
+    // console.log(p.text());  // Lorem ipsum...
+    //
+    // p.text("Now it's a very short paragraph.");
+    // console.log(p.text());  // Now it's a very short paragraph.
+    //
+    // // 2) HTML content: html()
+    //
+    // // In contrast to text(), html() allows you to retrieve the content of an
+    // // element including the HTML code of its content/children.
+    // var p2 = $("p").eq(1);  // Second <p> tag
+    // console.log(p2.text());  // Lorem ipsum...
+    // console.log(p2.html());  // <span>Lorem</span> ipsum ...
+    //
+    // // Similarly, you can set the HTML content of an element with html()
+    // // whereas text() would escape the HTML code to make it show as text.
+    // $("li ul").eq(0).text("<li>Not an item</li>");
+    // $("li ul").eq(1).html("<li>Correct item</li>");
+    //
+    // // You can use this in a way that appends content to an element.
+    // p2.text(p2.text() + " This is an additional sentence.");
+    // p2.html(p2.html() + " <span class='emphasize'>And another emphasized one.</span>");
+
+});
+
+// Click Handlers
+$(function () {
+
+    // Click handler can be attached by passing a callback function to the click()
+    // function. Whatever code you write into the callback function is then
+    // executed whenever the user clicks the element.
+    // You can add a parameter to the callback to retrieve additional info about
+    // the event. Accordingly, we call the parameter "event".
+    // $("#btn-click").click(function (event) {
+    //     console.log(event);
+    //     alert("Thanks for clicking me!");
+    // });
+    //
+    // // As always in jQuery, inside the callback, you can refer to the element
+    // // as $(this).
+    // $(".red-box").click(function () {
+    //     var currentOpacity = $(this).css("opacity");
+    //     $(this).fadeTo(500, currentOpacity - 0.2);
+    // });
+    //
+    // // You can even simulate click events on the element by calling click()
+    // // without any arguments.
+    // $(".red-box").click();
+    //
+    // // fade redbox on click for 500 sec and 50% opacity
+    // $(".red-box").click(function () {
+    //     $(this).fadeTo(500, 0.5);
+    // });
+
+});
+
+// Hover Handlers
+$(function () {
+
+    // // Hover handlers are defined the same way as click handlers but using hover().
+    // // Hover events fire as soon as the cursor enters *or* leaves the element.
+    // $("#btn-hover").hover(function (event) {
+    //     console.log(event);
+    //     alert("You hovered me!");
+    // });
+    //
+    // // And you can again refer to the element as $(this) from within the callback.
+    // $(".green-box").hover(function () {
+    //     $(this).text("Hovered!");
+    // });
+
+});
+
+// Mouse Enter & Mouse Leaves
+$(function () {
+
+    // While hover() with one callback function triggers both when entering and
+    // leaving the element with the cursor, mouseenter() and mouseleave() allow
+    // you to attach different event handlers for both.
+    // $(".blue-box").mouseenter(function() {
+    //     $(this).stop().fadeTo(500, 0.5);
+    // });
+    //
+    // $(".blue-box").mouseleave(function() {
+    //     $(this).stop().fadeTo(500, 1);
+    // });
+    //
+    // // However, you can achieve the same with hover() as well. For this, you must
+    // // pass in two callback functions: first the one for mouseenter, then the one
+    // // for mouseleave.
+    // // So the following does the same as  the above, but for the red box:
+    // $(".red-box").hover(function() {
+    //     $(this).stop().fadeTo(500, 0.5);
+    // }, function() {
+    //     $(this).stop().fadeTo(500, 1);
+    // });
+
+    // hover(handlerIn, handlerOut)
+    // var blueBox = $(".blue-box");
+    // blueBox.hover(function () {
+    //     $(this).stop().fadeTo(500, 0.7);
+    // }, function () {
+    //     $(this).stop().fadeTo(500, 1);
+    // });
+
+});
+
+// Adding the same handler for multiple events
 
 
 
