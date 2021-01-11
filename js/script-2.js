@@ -675,7 +675,11 @@ $(function () {
     //
     // // fade redbox on click for 500 sec and 50% opacity
     // $(".red-box").click(function () {
-    //     $(this).fadeTo(500, 0.5);
+    //     $(this).css(500, 0.5);
+    // });
+    //// float redbox right
+    // $(".red-box").click(function () {
+    //     $(this).css("float", "right");
     // });
 
 });
@@ -732,6 +736,271 @@ $(function () {
 });
 
 // Adding the same handler for multiple events
+$(function () {
+
+    // // You can attach the same handler (callback function) for multiple events
+    // // using jQuery's on() function.
+    // // For instance, the following logs to the console whenever you click anywhere
+    // // on the page or press any key while the page/browser is focused.
+    // $("html").on("click keydown", function() {
+    //     console.log("Mouse was clicked or key was pressed.");
+    // });
+    //
+    // // Let's use this to add a gallery that switches to the next image on click.
+    // var images = [
+    //     "images/laptop-mobile_small.jpg",
+    //     "images/laptop-on-table_small.jpg",
+    //     "images/people-office-group-team_small.jpg"
+    // ];
+    //
+    // // The following is the same as in the image slideshow code, except we now
+    // // use a click event instead of setTimeout().
+    // var i = 0;
+    // $(".gallery").find("img").on("click", function() {
+    //     i = (i + 1) % images.length;
+    //     $(this).fadeOut(function() {
+    //         $(this).attr("src", images[i]).fadeIn();
+    //     });
+    // });
+
+});
+
+// no inline functions
+//$(function () {
+
+//     // You can modularize your code into smaller functions by defining the
+//     // callback function explicitly instead of passing it in.
+//
+//     // Directly passing in callback as before. We call this callback an *anonymous
+//     // function* because it doesn't have a name.
+//     $("html").on("click keydown", function() {
+//         console.log("Mouse was clicked or key was pressed.");
+//     });
+//
+//     // Using named function as a callback (this function is defined at the end of
+//     // this file).
+//     $("html").on("click keydown", logEvent);
+//
+//     // Let's use this to add a gallery that switches to the next image on click.
+//     var images = [
+//         "images/laptop-mobile_small.jpg",
+//         "images/laptop-on-table_small.jpg",
+//         "images/people-office-group-team_small.jpg"
+//     ];
+//
+//     // For this function, it makes more sense to modularize it because the
+//     // callback is more complex.
+//     // To do this, we store the gallery image in a variable so that we can use it
+//     // in the switchToNextImage() function instead of $(this). Using $(this)
+//     // would still work but would make the function harder to read and understand.
+//     var i = 0;
+//     var galleryImage = $(".gallery").find("img")
+//     galleryImage.on("click", switchToNextImage);
+//
+//     // In contrast to logEvent(), this is a nested function (it's nested into our
+//     // main jQuery function). This way, we can access galleryImage.
+//     function switchToNextImage() {
+//         i = (i + 1) % images.length;
+//         galleryImage.fadeOut(function() {
+//             galleryImage.attr("src", images[i]).fadeIn();
+//         });
+//     }
+//
+// });
+//
+// // Normal, named function
+// function logEvent() {
+//     console.log("Mouse was clicked or key was pressed.");
+// }
+
+// delegated events
+$(function () {
+
+    // // The event handlers you've used so far are only attached to those elements
+    // // that exist at the time the code is executed. Thus, they won't work for
+    // // dynamically attached elements:
+    // $("p").click(function() {
+    //     $(this).slideUp();
+    // });
+    // $("#list").before("<p>This is a dynamically added paragraph</p>");
+    //
+    // // To solve this, you can use delegated events. Here, you attach the handler
+    // // to a parent element that will always exist on the page. When the event
+    // // comes in, the parent then delegates the event to all defined children.
+    // // For this, you must use the on() function, and pass in which children should
+    // // handle the event. For instance, all <li> tags inside #content:
+    // $("#content").on("click", "li li", function() {
+    //     $(this).slideUp();
+    // });
+    //
+    // $("#list ul").append("<li>Dynamically added new item!</li>");
+
+    // change color of li when mouse enters them
+    // $("body").on("mouseenter", "li", function() {
+    //     $(this).css("color", "cyan");
+    // });
+
+});
+
+// Passing Additional Data to Events
+$(function () {
+
+    // Passing an object
+    // $("#btn-click").click({
+    //     user: "Sova"
+    // }, function (event) {
+    //     greetUser(event.data);
+    // });
+
+
+    // For all the event handlers you've learned, you can pass in an additional
+    // first argument to attach extra data to the event object. This extra data
+    // is passed as a JavaScript object, which is encompassed by curly braces:
+    // $("#btn-click").click({
+    //     user: "Peter",
+    //     domain: "http://petersommerhoff.com"
+    // }, function (event) {
+    //     console.log(event.data);  // event.data carries the extra data: user and domain
+    //
+    //     // Here, we call our function greetUser() and pass in the event data as
+    //     // its argument.
+    //     greetUser(event.data);
+    // });
+    //
+    // // The function greetUser() accepts one parameter with user data (this will
+    // // be event.data) so that we can access it inside the function.
+    // function greetUser(userdata) {
+    //     // Uses the user from the event data, or "Anonymous" if none is defined.
+    //     username = userdata.user || "Anonymous";
+    //     domain = userdata.domain || "example.com";
+    //
+    //     alert("Welcome back " + username + " from " + domain + "!");
+    // }
+
+});
+
+// gallery with lightbox
+$(function () {
+
+    // // These are now multiple images.
+    // var galleryItems = $(".gallery").find("img");
+    //
+    // // Normally, you would do this in CSS.
+    // galleryItems.css("width", "30%")
+    //     .css("opacity", "0.7");
+    //
+    // // Fade images in/out when hovering/leaving.
+    // galleryItems.mouseenter(function() {
+    //     $(this).stop().fadeTo(500, 1);
+    // });
+    //
+    // galleryItems.mouseleave(function() {
+    //     $(this).stop().fadeTo(500, 0.7);
+    // });
+    //
+    // // Preview image in lightbox when clicked.
+    // galleryItems.click(function() {
+    //     // Read image src of clicked image.
+    //     var source = $(this).attr("src");
+    //
+    //     // Generate new <img> tag to add to the lightbox.
+    //     var newImage = $("<img>").attr("src", source).css("width", "100%");
+    //
+    //     // Prepare and show lightbox preview.
+    //     $(".lightbox").empty().append(newImage).fadeIn(1000);
+    // });
+    //
+    // // Exit lightbox preview when clicking it anywhere.
+    // $(".lightbox").click(function() {
+    //     $(this).stop().fadeOut();
+    // });
+
+});
+
+// keyup & keydown events
+$(function () {
+
+    // To handle key presses, use keydown().
+    // Usually, you'll attach this to the <html> tag so that the event is handled
+    // whenever a key is pressed on the page.
+    // $("html").keydown(function(event) {
+    //     // You normally want to use the event argument here to do something based
+    //     // on which key was pressed. This information is stored in event.which.
+    //     console.log(event.which);
+    // });
+
+    // Looking at the log of event.which, we can see that the arrow right key
+    // corresponds to 39. So let's store this info to make the code readable:
+    // var ARROW_RIGHT = 39;
+    //
+    // // Now let's move the blue box when the user presses the arrow right key.
+    // $("html").keydown(function(event) {
+    //     if (event.which === ARROW_RIGHT) {
+    //         $(".blue-box").stop().animate({
+    //             marginLeft: "+=10px"
+    //         }, 50);
+    //     }
+    // });
+
+});
+
+// Focus & Blur Events
+$(function () {
+
+    // // Select inputs
+    // var inputFields = $("input:text, input:password, textarea");
+    //
+    // // Add grey box shadow when focusing any input using focus().
+    // inputFields.focus(function() {
+    //     $(this).css("box-shadow", "0 0 4px #666");
+    // });
+    //
+    // // Conversely, remove box shadow from other inputs when unfocusing them
+    // // using blur().
+    // inputFields.blur(function() {
+    //     $(this).css("box-shadow", "none");
+    // });
+    //
+    // // Add green or red background to name field, depending on whether the input
+    // // fulfills the validation criteria (here simply at least 3 characters)
+    // $("#name").blur(function() {
+    //     var text = $(this).val();
+    //     if (text.trim().length < 3) {
+    //         $(this).css("box-shadow", "0 0 4px #811");
+    //     } else {
+    //         $(this).css("box-shadow", "0 0 4px #181");
+    //     }
+    // });
+
+});
+
+// change event
+$(function () {
+
+    // The change event is used for input elements such as checkboxes, radio
+    // button and select tags. They fire whenever the selection changes.
+
+    // Add green indicator when checkbox is checked and red one otherwise.
+    $("#checkbox").change(function() {
+        var isChecked = $(this).is(":checked");  // or .prop("checked")
+
+        if (isChecked) {
+            // Add the checkbox' label to the selection and highlight both in green.
+            $(this).add("label[for='checkbox']").css("box-shadow", "0 0 4px #181");
+        } else {
+            $(this).add("label[for='checkbox']").css("box-shadow", "0 0 4px #811");
+        }
+    });
+
+    // Another common use case is to read the selected option from a <select>
+    // element when a new option is selected.
+    $("#selection").change(function() {
+        var chosen = $(this).find(":selected").text();
+        alert(chosen);
+    });
+
+});
+
 
 
 
